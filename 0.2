@@ -1,24 +1,24 @@
-
 \documentclass[11pt,reqno,oneside,a4paper]{article}
-\usepackage[a4paper,includeheadfoot,left=35mm,right=35mm,top=00mm,bottom=30mm,headheight=40mm]{geometry} 
-\input{../texHead-Proof-Standard} 
-\input{../texHead-Proof-Theorems}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
 
 \title{Practice proofs \#2}
-\author{Anonymous}
+\author{Daniela}
 \date{\today}  
 
 \begin{document}
 \maketitle
-\thispagestyle{fancy}
 
 
-\section*{Proof 1}
-
-\begin{thm} \label{thm:3Divides4ton-1}
-	If $n$ is a nonnegative integer, then $3 \mid (4^n-1)$.
-\end{thm}
-
+\begin{theorem} 
+	If $n$ is a nonnegative integer, then $3 \mid (4^n-1)$. \\
+\end{theorem}
 
 \begin{proof}
 
@@ -32,7 +32,7 @@ $$= 3 \mid (0). $$
 
 Since 0 is divisible by three (zero is divisible by any integer apart from itself), the theorem holds for the base case.
 
-Now, assuming that the theorem holds for some $n \in \N$, we need to prove that it holds for $n + 1$ as well. For $n+1$, we have:
+Now, assuming that the theorem holds for some $n \in \mathbb{N}$, we need to prove that it holds for $n + 1$ as well. For $n+1$, we have:
 
 $$P(n+1) = 4^{n+1} - 1 .$$
 
@@ -42,7 +42,7 @@ $$4^{n+1} - 1 $$
 $$=  4 \times 4^n - 1 $$
 $$=  3(4^n) + 4^n - 1. $$
 
-We are assuming that $4^n - 1$ is divisible by 3. Therefore, we can re-write this term $3k$, with $k\in\N{_0}$. Then, we get
+We are assuming that $4^n - 1$ is divisible by 3. Therefore, we can re-write this term $3k$, with $k\in\mathbb{N^0}$. Then, we get
 
 $$P (n+1) =  3(4^n) + 3k $$
 $$ = 3(4^n + k) $$
