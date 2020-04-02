@@ -1,0 +1,69 @@
+\documentclass[11pt,reqno,oneside,a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\title{Practice proofs \#2}
+\author{Daniela}
+\date{\today}  
+
+\begin{document}
+\maketitle
+
+
+\begin{theorem} 
+\label{thm:MovingSumOfFractions}
+	For all integers $n\geq2$,
+	$$
+		\sum_{k=1}^n\frac{1}{n+k} \geq \frac{7}{12}.
+	$$
+\end{theorem}
+
+
+\begin{proof}
+
+We will prove theorem 2 by induction on n. Firstly, let us look at the base case $n = 2$.
+
+$$\sum_{k=1}^2\frac{1}{2+k} \geq \frac{7}{12} $$
+$$\Leftrightarrow \frac{1}{2+1}+\frac{1}{2+2} \geq \frac{7}{12} $$
+$$\Leftrightarrow \frac{1}{3}+\frac{1}{4} \geq \frac{7}{12} $$
+$$\Leftrightarrow \frac{4+3}{12} \geq \frac{7}{12} $$
+$$\Leftrightarrow \frac{7}{12} \geq \frac{7}{12}. $$
+
+$P(n)$ is true for $n = 2$. Now, assuming that the theorem holds for some integer $n$, let us have a look at $P(n+ 1)$:
+
+$$\sum_{k=1}^{n+1}\frac{1}{n+1+k} $$
+
+For the theorem to hold, this summation will also have to be greater than or equal to $\frac{7}{12}.$.
+
+We already know that $P(n) \geq \frac{7}{12}$ for $n = 2$. If we can prove that $P(n+1) \geq P(n) $, then we will know that $P(n+1)$ is also greater than or equal to $\frac{7}{12}$. 
+
+Therefore, let us test the inequality below. We will call it lemma 1.
+
+$$\sum_{k=1}^{n+1}\frac{1}{n+1+k} \geq \sum_{k=1}^{n}\frac{1}{n+k}. $$
+
+Expanding the sums for a few terms, we have:
+
+$$\frac{1}{n+2} + \frac{1}{n+3} + \cdots + \frac{1}{2n+1}+ \frac{1}{2n + 2} \geq \frac{1}{n+1} + \frac{1}{n+2} + \cdots + \frac{1}{2n}.$$
+
+Cancelling the repeating terms and subsequently rearranging the inequality, we have:
+
+$$\frac{1}{2n+1} + \frac{1}{2n+2} \geq \frac{1}{n+1} $$
+$$\Leftrightarrow \frac{1}{2n+1} + \left(\frac{1}{2} \times \frac{1}{n+1}\right) \geq \frac{1}{n+1} $$
+$$\Leftrightarrow \frac{1}{2n+1}  \geq \frac{1}{n+1} - \left(\frac{1}{2} \times \frac{1}{n+1}\right) $$
+$$\Leftrightarrow \frac{1}{2n+1}  \geq \left(\frac{1}{2} \times \frac{1}{n+1}\right) $$
+$$\Leftrightarrow \frac{1}{2n+1}  \geq \frac{1}{2n+2} $$
+$$\Leftrightarrow 2n + 2 \geq 2n + 1 $$
+$$\Leftrightarrow 2 \geq 1 .$$
+
+Two is greater than one, so lemma 1 holds. In other words, $P(n+1) \geq P(n) $. Since we have already shown that $P(n) \geq \frac{7}{12}$ for $n = 2$, lemma 1 implies, by transitive law, that $P(n+1) \geq \frac{7}{12}$. Theorem 1 therefore holds.
+
+
+\end{proof}
+
+\end{document}
