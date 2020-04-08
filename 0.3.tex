@@ -1,0 +1,89 @@
+	\documentclass[11pt,reqno,oneside,a4paper]{article}
+	\usepackage[a4paper,includeheadfoot,left=35mm,right=35mm,top=00mm,bottom=30mm,headheight=40mm]{geometry} %sets up the margins
+	\input{../texHead-Proof-Standard} % Use the standard texHead for this module. You should not edit this file.
+	\input{../texHead-Proof-Theorems} % Use the standard theorem definitions for this module. You should not edit this file.
+	%---The following code defines the title, author, and date of the document.
+	\title{Practice proofs \#3}
+	\author{Anonymous}
+	\date{\today}   % Using \today automatically updates to the document's build date
+%----------------------------------
+%---------IF YOU WANT TO DEFINE YOUR OWN MACROS, YOU CAN DO SO FROM HERE ...
+
+%---------... TO HERE
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+%-----------EDIT FROM HERE
+
+
+
+Fermat may be famous as a mathematician for his ``last theorem'', but he had plenty of others. The divisibility result of theorem~\ref{thm:FermatLittle} is one of the best-known.
+
+\begin{lem} \label{lem:FermatLittleMainLemma}
+	For any prime number $p$, and any integer $k$ such that $1 \leq k \leq p-1$, the binomial coefficient $\binom{p}{k}$ is divisible by $p$.
+\end{lem}
+
+
+\begin{proof}
+We can prove this by direct induction
+
+We know that the binomial coefficient is the following:
+$$\binom{p}{k} = \frac{p!}{k!(p-k)!}$$
+
+Expanding it, we have:
+$$\frac{1 \times 2 \times \cdots \times k \times \cdots \times p}{(1 \times 2 \times \cdots \times k)(1 \times 2 \times \cdots \times (p-k))}$$.
+
+Cancelling the factors that are present both in the numerator and in the denominator, we have:
+$$\frac{(k+1)(k+2) \times \cdots \times p}{1 \times 2 \times \cdots \times (p-k)}$$.
+
+Let us call the above term $a$. We could re-write $a$ as $p \times b$, where $b$ is the following:
+
+$$\frac{(k+1)(k+2)\times \cdots \times (p-1)}{1 \times 2 \times \cdots \times (p-k)}$$.
+
+We know that $p$ is prime. For $a$, the binomial coefficient, to be divisible by $p$, $b$ would have to be an integer. This is because an integer multiplied by $p$ will also be a multiple of $p$, whereas that is not the case when $p$ multiplies, say, a decimal number.
+ 
+Now, we know that $a$ is an integer, because $a$ is just the binomial coefficient--that is, the number of ways we can pick $k$ elements from a set of $n$ elements.
+
+Therefore, we have two options for $b$: firstly, it could be an integer which is multiplied by $p$ and becomes another integer, integer $a$. Else, $b$ could be an irreducible fraction with $p$ in the denominator, which thus becomes integer $a$ when multiplied by $p$. To illustrate this last example, we can think of the irreducible fraction $\frac{3}{5}$, which becomes the integer $3$ when multiplied by $5$.
+
+However, when we look at the denominator of $b$, there is no factor $p$. Therefore, there is no way that $b$ could be a non-integer that becomes an integer when multiplied by a prime number $p$. Therefore, $b$ must be an integer already. And if $b$ is an integer, $a$ can be written as an integer multiplied by a prime number $p$. Therefore, for any integer $k$, such that $1 \leq k \leq p - 1$, the binomial coefficient $\binom{p}{k}$ is divisible by $p$.
+
+\end{proof}
+
+
+\begin{thm} \label{thm:FermatLittle}
+	If $x$ is a natural number and $p$ is a prime number, then $x^p - x$ is a multiple of $p$.
+\end{thm}
+
+
+\begin{proof}
+We can prove this theorem by induction on $x$.
+
+Let's look at the base case of $x = 1$. We thus have:
+$$1^p - 1 = 0$$
+$$1 - 1 = 0$$
+$$0 = 0$$
+0 is a multiple of p for any $p$ when $x = 0$. Therefore, our base case holds.
+
+Now, supposing that $x^p - x$ is true for some $x$, we can have a look at the $x + 1$ case. $A(x + 1)$ should look as follows:
+
+$$(x + 1)^p - (x+1)$$
+
+Expanding $(x+1)^p$ in the expression above, we have:
+
+$$\left(\binom{p}{0}x^p + \binom{p}{1}x^{p-1} + \cdots + \binom{p}{p-1}x + 1\right) - (x + 1) $$
+$$ = \left(x^p + p \times x^{p-1} + \cdots + \binom{p}{p-1}x\right) - x. $$
+
+Placing $x^p$ and $x$ together, we have:
+
+$$ = (x^p - x) + \left(p \times x^{p-1} + \cdots + \binom{p}{p-1}x\right) $$
+
+Now, on the left-hand-side, we have $x^p - x$, the base case which we already supposed is divisible by $p$. On the right-hand-side, we have a sum of $x$ multiplied by different binomial coefficients of the form $\binom{p}{k}$. By lemma one, the right-hand-side should also be divisible by $p$, because each term is multiplied by a coefficient which is divisible by $p$. Therefore, the entire expression is divisible by $p$.
+
+Therefore, by induction on $x$, we know that $A(x)$ implies $A(x+1)$. Theorem 2 is thus proven.
+
+\end{proof}
+
+
+\end{document}
