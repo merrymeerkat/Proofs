@@ -1,1 +1,63 @@
-\documentclass{article}
+ \documentclass[11pt,reqno,oneside,a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\title{A bijection from the unit interval to the whole real line}
+\author{Daniela}
+\date{\today}  
+
+
+\begin{document}
+\maketitle
+
+
+We explicitly construct a bijection mapping from the unit interval to the whole real line.
+
+\begin{theorem} \label{thm:BijectionRInterval}
+	Define $f : (0,1) \to \mathbb{R}$ by
+	$$
+		f(x) =\frac{1}{1-x} - \frac{1}{x}.
+	$$
+	The function $f$ is a bijection.
+\end{theorem}
+
+\begin{proof}
+
+To prove that $f$ is a bijection, we will first show that it is an injection.
+
+A strictly increasing function is an injection, because $\forall (a > b)$,  $f(a) > f(b)$, where $a, b \in (0,1)$. Therefore, to prove that $f$ is injective, we will show that $f$ is strictly increasing.
+
+To do so, it might be helpful to look separately at the two terms that are in $f$, and look at what happens to each of them as $x$ increases.
+
+Firstly, $\frac{1}{1-x}$ is a term which increases as $x$ increases within the range of $(0,1)$. This happens because $1 - x$ is a term whose value decreases whenever we start with a positive $x$ and increase the value of $x$. Fractions get larger as their denominators decrease, so $\frac{1}{1-x}$ is strictly increasing for this range.
+
+The opposite happens to $\frac{1}{x}$. As $x$ increases within the range $(0,1)$, the term as a whole decreases, since a greater denominator leads to a smaller number.
+
+Therefore, we know this about the terms of $f(a)$ and $f(b)$, where  $a, b \in (0,1)$ and $a > b$:
+
+$$\frac{1}{1-a} > \frac{1}{1-b} $$ 
+and 
+$$\frac{1}{a} < \frac{1}{b} $$
+
+Therefore, $\left(\frac{1}{1-a} - \frac{1}{a}\right) >  \left(\frac{1}{1-b} - \frac{1}{b}\right)$, showing that $f(a) > f(b)$ for $a>b$.
+
+Now, let us prove that $f$ is surjective. For this, we will use the intermediate value theorem. This theorem states that, for a function $g$ that is continuous over an interval $[c,d]$, $g$ will take on every value between $f(c)$ and $f(d)$. 
+
+Now, we know that $\frac{1}{1-x}$ is continuous over the range $(0,1)$. That is because the range of $x$ is continuous and there is no $x$ within this range that would not yield a value for $\frac{1}{1-x}$. Similarly, $\frac{1}{x}$ is also continous for this range. Our $f$ is thus a subtraction of two continuous terms, and thus must be continuous as well.
+
+Now, suppose $N$. Then, suppose $x_1 = \frac{1}{N}$ and $x_2 = 1 + \frac{1}{N}$. That means that $lim_{N\to\infty} x_1 = 0$ and $lim_{N\to\infty} x_2 = 1$. We can then say our function $f$ is on the range $[x_1, x_2]$. 
+
+Since $f$ is continuous over $[x_1, x_2]$, it must take every value between $f(x_1)$ and $f(x_2)$. Therefore, $f$ is surjective.
+
+Since $f$ is injective and surjective, it is bijective.
+
+\end{proof}
+
+\end{document}
+
