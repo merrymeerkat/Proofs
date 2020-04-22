@@ -1,0 +1,58 @@
+%---------DO NOT EDIT THIS INDENTED SECTION
+	% Preamble
+	\documentclass[11pt,reqno,oneside,a4paper]{article}
+	\usepackage[a4paper,includeheadfoot,left=35mm,right=35mm,top=00mm,bottom=30mm,headheight=40mm]{geometry} %sets up the margins
+	\input{../texHead-Proof-Standard} % Use the standard texHead for this module. You should not edit this file.
+	\input{../texHead-Proof-Theorems} % Use the standard theorem definitions for this module. You should not edit this file.
+	%---The following code defines the title, author, and date of the document.
+	\title{Practice proofs \#5}
+	\author{Anonymous}
+	\date{\today}   % Using \today automatically updates to the document's build date
+%----------------------------------
+%---------IF YOU WANT TO DEFINE YOUR OWN MACROS, YOU CAN DO SO FROM HERE ...
+
+%---------... TO HERE
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+%-----------EDIT FROM HERE
+
+\begin{abstract}
+	\input{PracticeProofsStandardAbstract.tex}
+	
+	I fitted the whole model solutions onto $1.5$ pages.
+\end{abstract}
+
+We study how cardinality interacts with subsets and power sets.
+
+Recall that we say that two sets are equinumerous if they have the same cardinality.
+The following proposition says that the operation ``take the power set'' preserves equinumerosity.
+	
+\begin{prop} \label{prop:PowerSetsPreserveEquinumerosity}
+	Suppose $\# X=\# Y$.
+	Then $\# \power(X)=\# \power(Y)$.
+	Moreover, if $\# X\leq\# Y$, then $\# \power(X)\leq\# \power(Y)$.
+\end{prop}
+
+\begin{proof}
+We know from Cantor's theorem that the cardinality of the power set of a set of cardinality $n$ equals to $2^n$. Therefore, where $\# X=\# Y = n $, $\# \power(X)= 2^n = \# \power(Y)$. From Cantor's theorem we also know that  if $a = \# X\leq\# Y = b$, then $\# \power(X)\leq\# \power(Y)$, because $2^a \leq 2^b$.
+\end{proof}
+
+\begin{prop} \label{prop:SubsetCardinality}
+	If $X\subset Y$, then $\# X\leq \# Y$.
+\end{prop}
+
+\begin{proof}
+If $X\subset Y$, then $\forall a$, $a \in X$, $	\exists! b \in Y$, such that $a=b$. Since each element of $X$ corresponds to (or, more especifically, equals to) a unique element of $Y$, there is an injection from $X$ to $Y$. The domain of an injection is smaller than or equal to its codomain, so  $\# X\leq \# Y$.
+\end{proof}
+
+\begin{cor} \label{cor:IntersectionCardinality}
+	$\# (X\cap Y) \leq \# X$.
+\end{cor}
+
+\begin{proof}
+Since all of the elements in the intersection of $X$ and $Y$ are also elements of $X$, $(X \cap Y)$ is a subset of $X$. From proposition 2, we know that the cardinality of a subset of a set is less than or equal to the cardinality of that set. Therefore, $\#(X\cap Y) \leq \#X$.
+\end{proof}
+
+\end{document}
