@@ -1,22 +1,21 @@
-%---------DO NOT EDIT THIS INDENTED SECTION
-	% Preamble
-	\documentclass[11pt,reqno,oneside,a4paper]{article}
-	\usepackage[a4paper,includeheadfoot,left=35mm,right=35mm,top=00mm,bottom=30mm,headheight=40mm]{geometry} %sets up the margins
-	\input{../texHead-Proof-Standard} % Use the standard texHead for this module. You should not edit this file.
-	\input{../texHead-Proof-Theorems} % Use the standard theorem definitions for this module. You should not edit this file.
-	%---The following code defines the title, author, and date of the document.
-	\title{Practice proofs \#5}
-	\author{Anonymous}
-	\date{\today}   % Using \today automatically updates to the document's build date
-%----------------------------------
-%---------IF YOU WANT TO DEFINE YOUR OWN MACROS, YOU CAN DO SO FROM HERE ...
+\documentclass[11pt,reqno,oneside,a4paper]{article}
 
-%---------... TO HERE
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\title{pp5}
+\author{Daniela}
+\date{\today}  
+
+
 \begin{document}
 \maketitle
-\thispagestyle{fancy}
 
-%-----------EDIT FROM HERE
 
 \begin{abstract}
 	\input{PracticeProofsStandardAbstract.tex}
