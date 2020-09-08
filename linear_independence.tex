@@ -1,0 +1,119 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{esint}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{verbatim}
+\usepackage{eucal}
+\usepackage{mathrsfs}
+\usepackage[hmargin = 1in,vmargin=1in]{geometry}
+\usepackage[parfill]{parskip}
+
+
+\setlength{\parskip}{2ex}
+\pagestyle{fancy}
+
+
+\lhead{Short proofs about linearity and linear independence}
+\chead{}
+\rhead{}
+
+\begin{document}
+
+\begin{enumerate}
+
+\item
+Let $\alpha,\beta \in \mathbb{R}$. Define $T : \mathbb{R}^3 \to \mathbb{R}^2$ by
+\[ T(x,y,z) = (2x - 4y + 3z + \alpha, 6x + \beta xyz). \]
+Prove that $T$ is linear if and only if $\alpha = 0 = \beta$.
+
+\begin{proof}
+
+In order to prove that $T$ is linear if and only if $\alpha = 0 = \beta$, we need to prove that T is always linear when $\alpha = 0 = \beta$, and that $T$ is only linear when $\alpha = 0 = \beta$.
+\par
+First, let $\alpha$ and $\beta$ equal 0. Then, for the scalars $a, b, c$, we can write 
+$$ T(a, b, c) = (2a - 4b + 3c, 6a). $$
+By the definition of linearity, the following must be true for $T$ to be linear:
+\par
+$$T(\omega a, \omega b, \omega c) = \omega T (a, b, c), \: \omega \in \mathbb{F}$$
+\begin{center} and \end{center}
+ $$T(a_1 + a_2, b_1 + b_2, c_1 + c_2) = T(a_1, b_1, c_1) + T(a_2, b_2, c_2).$$
+ Checking for the scaling property, we get:
+ $$T(\omega a, \omega b, \omega c) = (2\omega a - 4\omega + 3\omega c, 6\omega a) $$
+ By the distributive property of multiplication:
+ $$ \rightarrow T(\omega a, \omega b, \omega c) = (\omega (2a - 4b + 3c), \omega(6a))$$
+ $$ \rightarrow T(\omega a, \omega b, \omega c) = \omega (2a - 4b + 3c, 6a) = \omega T(a, b, c).$$
+The first condition for linearity holds.
+\par
+Now, we can look at vector addition. Consider the scalars $a_1, a_2, b_1, b_2, c_1, c_2$.
+$$T(a_1 + a_2, b_1 + b_2, c_1 + c_2) = (2(a_1 + a_2) -4(b_1 + b_2) + 3(c_1 + c_2), 6(a_1 + a_2))$$
+$$ \rightarrow T(a_1 + a_2, b_1 + b_2, c_1 + c_2) =  (2a_1 + 2a_2 - 4b_1 - 4b_1 + 3c_1 + 3c_2, 6a_1 + 6a_2) $$
+$$ \rightarrow T(a_1 + a_2, b_1 + b_2, c_1 + c_2) =  (2a_1 - 4b_1 + 3c_1, 6a_1) + (2a_2 - 4b_2 + 3c_2, 6a_2) = T(a_1, b_1, c_1) + T(a_2, b_2, c_2). $$ 
+Vector addition is preserved.
+\par Now we can check whether $T$ can be linear if $\alpha$ and $\beta$ are something other than 0.
+First, let us look at the scalar multiplication, for $a, b, c, \omega \in \mathbb{F}$.% $\omega \neq 0$:
+$$T(\omega(a,b,c)) = T(\omega a, \omega b, \omega c) = (2\omega a - 4\omega + 3\omega c + \alpha, 6\omega a + \omega^3 \beta abc).$$
+On the other hand, we have
+$$\omega T(a, b, c) = \omega(2a - 4b + 3c + \alpha, 6a + \beta abc) = (2\omega a - 4\omega + 3\omega c + \omega\alpha, 6\omega a + \omega \beta abc).$$
+In order for $T$ to be linear, $\alpha = \omega\alpha$ and $\omega^3 \beta abc = \omega \beta abc$. This is only the case if both $\alpha$ and $\beta$ equal 0.
+\par
+Finally, we can consider vector addition. Let us again use the scalars $a_1, a_2, b_1, b_2, c_1, c_2$.
+$$T(a_1 + a_2, b_1 + b_2, c_1 + c_2) = (2(a_1 + a_2) -4 (b_1 + b_2) + 3(c_1 + c_2) + \alpha, 6(a_1 + a_2) + \beta (a_1 + a_2)(b_1 + b_2)(c_1 + c_2)).$$
+We can rewrite the result as two coordinate pairs, placing the $\alpha$ and $\beta$ values in one of them (it does not matter which) but otherwise splitting the components half-half.
+\begin{equation}T(a_1 + a_2, b_1 + b_2, c_1 + c_2) = (2a_1 - 4b_1 + 3c_1 + \alpha , 6a_1 + \beta (a_1 + a_2)(b_1 + b_2)(c_1 + c_2)) + (2a_2 - 4b_2 + 3c_2, 6a_2).\label{eq:2} \end{equation}
+On the other hand, we have 
+$$T(a_1, b_1, c_1) + T(a_2, b_2, c_2) = (2a_1 - 4b_1 + 3c_1 + \alpha, 6a_1 + \beta a_1 b_1 c_1) + (2a_2 - 4b_2 + 3c_2 + \alpha, 6a_2 + \beta a_2 b_2 c_2).$$
+Again, we will place all the $\alpha$ and $\beta$ in one of the coordinate pairs:
+\begin{equation}(a_1, b_1, c_1) + T(a_2, b_2, c_2) = (2a_1 - 4b_1 + 3c_1 + 2\alpha, 6a_1 + \beta (a_1 b_1 c_1 + a_2 b_2 c_2)) + (2a_2 - 4b_2 + 3c_2 , 6a_2).\label{eq:3} \end{equation}
+For linearity to hold, equation 2 must equal equation 3. The second coordinate pairs are already the same, so we can look at the first:
+$$(2a_1 - 4b_1 + 3c_1 + \alpha , 6a_1 + \beta (a_1 + a_2)(b_1 + b_2)(c_1 + c_2)) = (2a_1 - 4b_1 + 3c_1+2\alpha, 6a_1+ \beta (a_1 b_1 c_1 + a_2 b_2 c_2)$$
+\begin{center}$\rightarrow 2a_1 - 4b_1 + 3c_1 + \alpha = 2a_1 - 4b_1 + 3c_1 +2\alpha$ and $6a_1 + \beta (a_1 + a_2)(b_1 + b_2)(c_1 + c_2) = 6a_1 + \beta (a_1 b_1 c_1 + a_2 b_2 c_2)$.\end{center}
+\begin{center}$\rightarrow  \alpha = 2\alpha $ and $ \beta (a_1 + a_2)(b_1 + b_2)(c_1 + c_2) = \beta (a_1 b_1 c_1 + a_2 b_2 c_2)$.\end{center}
+\par Once again, the two equalities above are only satisfied if $\alpha = 0 = \beta$.
+\end{proof}
+
+\item
+Suppose that $v_1, v_2, v_3, v_4$ spans $V$. Prove that the list
+\[ v_1 - v_2, v_2 - v_3, v_3 - v_4, v_4 \]
+also spans $V$.
+\begin{proof}
+This new list also spans $V$, because we can write each element of the original list as a linear combination of elements of this new list. All we have to do is add each element of the new list by the elements that come after it, as follows:
+\par $(v_1 - v_2) + (v_2 - v_3) + (v_3 - v_4) + v_4 $ gives us $v_1$.
+\par  $(v_2 - v_3) + (v_3 - v_4) + v_4$ gives us $v_2$.
+\par $(v_3 - v_4) + v_4$ gives us $v_3$.
+\par And the last element of the new list is already $v_4$.
+\end{proof}
+
+
+
+\item
+Suppose that $v_1, v_2, v_3, v_4$ is linearly independent in $V$. Prove that the list
+\[ v_1 - v_2, v_2 - v_3, v_3 - v_4, v_4 \]
+is also linearly independent in $V$.
+\begin{proof}
+Suppose that $\exists$ scalars $\alpha_1, \alpha_2, \alpha_3, \alpha_4$ such that:
+\begin{equation} \alpha_1 \times (v_1 - v_2) + \alpha_2 \times (v_2 - v_3) + \alpha_3 \times (v_3 - v_4) + \alpha_4 \times v_4 = 0. \label{eq:1} \end{equation}
+\par We can distribute the products in equation 1 as follows:
+\begin{equation}\alpha_1 \times v_1 - \alpha_1 \times v_2 + \alpha_2 \times v_2 - \alpha_2 \times v_3 + \alpha_3 \times v_3 - \alpha_3 \times v_4 + \alpha_4 \times v_4 = 0. \end{equation}
+Now, if we group the terms in equation 2 by $v$ elements, we get:
+\begin{equation}\alpha_1 \times v_1 + (\alpha_ 2 - \alpha_1)  \times v_2 + (\alpha_ 2 - \alpha_1) \times v_3 + (\alpha_4 - \alpha_3) \times v_4 = 0. \end{equation}
+However, since the original list is independent, we know that, for scalars $\beta$, if
+$$\beta_1 \times v_1 + \beta_2  \times v_2 + \beta_3 \times v_3 + \beta_4\times v_4 = 0, $$
+then $\beta_1 = \beta_2  = \beta_3 = \beta_4 = 0$. 
+Therefore, $$\alpha_1 = \alpha_ 2 - \alpha_1 = \alpha_ 3 - \alpha_2 = \alpha_4 - \alpha_3 = 0.$$
+From this, we have:
+$$\alpha_1 = 0.$$
+$$\alpha_ 2 - \alpha_1 = 0 \rightarrow \alpha_2 - 0 = 0 \rightarrow \alpha_2 = 0.$$
+$$\alpha_ 3 - \alpha_2 = 0 \rightarrow \alpha_3 - 0 = 0 \rightarrow \alpha_3 = 0.$$
+$$\alpha_ 4 - \alpha_3 = 0 \rightarrow \alpha_4 - 0 = 0 \rightarrow \alpha_4 = 0.$$
+It turns out that we can only write $\vec{0}$ as a linear combination of the vectors in $v_1 - v_2, v_2 - v_3, v_3 - v_4, v_4$ if all of the scalars in this linear combination are zero. Therefore, this list is also linearly independent in $V$.
+
+\end{proof}
+
+\end{enumerate}
+
+\end{document}
